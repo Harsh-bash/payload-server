@@ -1,5 +1,7 @@
 import express, { json } from 'express';
 import { readFileSync } from 'fs';
+import { writeFileSync } from 'fs';
+
 
 const app = express();
 const port = 4000;
