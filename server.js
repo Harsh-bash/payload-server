@@ -33,7 +33,7 @@ app.use(json());
 app.post('/api/data', (req, res) => {
   const data = req.body;
   appendFileSync('data.json', JSON.stringify(data));
-  res.send('Data saved successfully!');
+//   res.send('Data saved successfully!');
 });
 
 app.get('/api/data', (req, res) => {
