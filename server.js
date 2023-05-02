@@ -1,10 +1,12 @@
 import express, { json } from 'express';
 import { readFileSync, appendFileSync } from 'fs';
+import cors from 'cors';
 
 const app = express();
 const port = 4000;
 
 app.use(json());
+app.use(cors());
 
 app.post('/api/data', (req, res) => {
   const data = req.body;
@@ -20,6 +22,7 @@ app.get('/api/data', (req, res) => {
 app.listen(port, () => {
   console.log(`Server running at:${port}`);
 });
+
 
 
 // import express, { json } from 'express';
