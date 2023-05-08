@@ -1,22 +1,23 @@
-import express, { json } from 'express';
+import express from 'express';
 import { readFileSync, appendFileSync } from 'fs';
 import cors from 'cors';
 
 const app = express();
 const port = 4000;
 
-app.use(json());
+app.use(express.text({type: 'application/xml'}));
 app.use(cors());
 
 app.post('/api/data', (req, res) => {
   const data = req.body;
-  appendFileSync('data.json', JSON.stringify(data));
-//   res.send('Data saved successfully!');
+  appendFileSync('data.xml', data);
+  res.send('Data saved successfully!');
 });
 
 app.get('/api/data', (req, res) => {
-  const data = readFileSync('data.json');
-  res.send(data.toString());
+  const data = readFileSync('data.xml');
+  res.type('application/xml');
+  res.send(data);
 });
 
 app.listen(port, () => {
